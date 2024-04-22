@@ -1,0 +1,52 @@
+{% extends 'base3.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+  
+  <section id="specials" class="specials">
+      <div class="container">
+    
+   <br><br><br>
+   <div class="section-title">
+    <h2>Check Mentor's <span>Offers</span></h2>
+    
+</div>
+          <div class="row">
+              <div class="col-lg-3">
+                  <ul class="nav  flex-column">
+                      {% for offer in offers %}
+                          <li class="nav-item">
+                              <a class="nav-link {% if loop.first %}active show{% endif %}" data-bs-toggle="tab" href="#tab-{{ loop.index }}">{{ offer.title }}</a>
+                          </li>
+                      {% endfor %}
+                  </ul>
+              </div>
+    
+              <div class="col-lg-9 mt-4 mt-lg-0">
+                  <div class="tab-content">
+                    {% for offer in offers %}
+                          <div class="tab-pane {% if loop.first %}active show{% endif %}" id="tab-{{ loop.index }}">
+                              <div class="row">
+                                  <div class="col-lg-8 details order-2 order-lg-1">
+                                    <p>duration:</p>
+                                      <h3>{{ offer.duration }} Min</h3>
+                                      <p>price:</p>
+                                      <h3>{{ offer.price }} $</h3>
+                                      
+                                      <p>{{ offer.description }}</p>
+                                  </div>
+                                
+                              </div>
+                          </div>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+    
+      </div>
+  </section><!-- End Specials Section -->
+
+  
+{% endblock %}
